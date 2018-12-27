@@ -1,7 +1,6 @@
 fs = require 'fs'
 d3 = require 'd3'
 _ = require 'lodash'
-# d3Node = require 'd3-node'
 canvasModule = require 'canvas-prebuilt'
 Chance = require 'chance'
 SimplexNoise = require 'simplex-noise'
