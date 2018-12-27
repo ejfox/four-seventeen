@@ -1,6 +1,16 @@
 {
   "name": "@ejfox/four-seventeen",
-  "version": "0.5.4",
+  "version": "0.5.5",
+  "description": "Generative art toolkit",
+  "license": "MIT",
+  "repository": "ejfox/four-seventeen",
+  "main": "index.js",
+  "keywords": [
+    "art",
+    "coffeescript",
+    "generative",
+    "canvas"
+  ],
   "scripts": {
     "build": "coffee -c -b index.coffee"
   },
