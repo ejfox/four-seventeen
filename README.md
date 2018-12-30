@@ -45,6 +45,9 @@ To quickly see changes when iterating on a script, this creates a simple web ser
 Works well when paired with [atom-browser](https://atom.io/packages/atom-browser)
 ![dev browser set-up](http://ej-fox.s3.amazonaws.com/screenshots/Screenshot%202018-12-15%2013.33.23.png)
 
+## TODO
++ Add watch script that compiles coffeescript on change
+
 ## Examples
 ![9-10](https://i.imgur.com/96fLEBe.png)
 ![10-2](https://i.imgur.com/WNcRDgg.png)
