@@ -5,19 +5,19 @@
 
 # Require GenArt which is the skeleton
 # around which all ArtScripts are built
-GenArt = require '@ejfox/four-seventeen'
+GenArt = require '../index'
 
 # Set up our requirements
 # SimplexNoise = require 'simplex-noise'
 seed = Date.now()
-clColors = require('nice-color-palettes/500')
+# clColors = require('nice-color-palettes/500')
 
 # Filenames follow the format $ArtScript-$seed.png
 # For example: `_boilerplate-1506887448254.png`
 
 # Set some options for our artscript
 options = {
-  filename: path.basename(__filename, '.js') + '-' + seed
+  # filename: path.basename(__filename, '.js') + '-' + seed
   count: 12
   numTicks: 1200
   bgColor: '#f6f6eb'
@@ -34,8 +34,8 @@ art = new GenArt(seed, options)
 # `makeParticles()` is called at the start of the script and creates
 # the particles which are manipulated and drawn on every tick
 art.makeParticles = ->
-  @colors = @chance.pickone clColors
-  @fillColor = @chance.pickone @colors
+  # @colors = @chance.pickone clColors
+  # @fillColor = @chance.pickone @colors
   # @bgColor = @chance.pickone @colors
 
   @data = d3.range(@count).map =>
