@@ -12,7 +12,8 @@
     "canvas"
   ],
   "scripts": {
-    "build": "coffee -c -b index.coffee"
+    "build": "coffee -cb index.coffee",
+    "watch": "coffee -wcb index.coffee"
   },
   "dependencies": {
     "canvas-prebuilt": "^2.0.0-alpha.14",

@@ -1,3 +1,6 @@
+# TODO: Fix this and make it a true UMD module
+# https://stackoverflow.com/questions/38638210/how-to-use-umd-in-browser-without-any-additional-dependencies/38642135#38642135
+
 fs = require 'fs'
 d3 = require 'd3'
 _ = require 'lodash'
