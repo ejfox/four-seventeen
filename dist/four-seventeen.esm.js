@@ -6,7 +6,7 @@ import _ from 'lodash';
 import Chance from 'chance';
 import SimplexNoise from 'simplex-noise';
 
-argv = yargs.alias('s', 'seed').argv;
+const argv = yargs.alias('s', 'seed').argv;
 
 // fs = require('fs');
 // d3 = require('d3');

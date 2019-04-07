@@ -14,7 +14,8 @@
     "canvas"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "release": "npm run build;release-it"
   },
   "files": [
     "dist"

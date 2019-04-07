@@ -10,7 +10,7 @@ var _ = _interopDefault(require('lodash'));
 var Chance = _interopDefault(require('chance'));
 var SimplexNoise = _interopDefault(require('simplex-noise'));
 
-argv = yargs.alias('s', 'seed').argv;
+const argv = yargs.alias('s', 'seed').argv;
 
 // fs = require('fs');
 // d3 = require('d3');

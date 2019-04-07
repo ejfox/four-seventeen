@@ -44871,7 +44871,7 @@
   });
   var simplexNoise_1 = simplexNoise.SimplexNoise;
 
-  argv = yargs_1$1.alias('s', 'seed').argv;
+  const argv = yargs_1$1.alias('s', 'seed').argv;
 
   // fs = require('fs');
   // d3 = require('d3');
