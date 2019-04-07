@@ -5,7 +5,7 @@
 
 # Require GenArt which is the skeleton
 # around which all ArtScripts are built
-GenArt = require '../index'
+GenArt = require '../src/main'
 
 # Set up our requirements
 # SimplexNoise = require 'simplex-noise'
