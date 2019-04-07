@@ -4,7 +4,9 @@
   "description": "Generative art toolkit",
   "license": "MIT",
   "repository": "ejfox/four-seventeen",
-  "main": "index.js",
+  "main": "dist/four-seventeen.cjs.js",
+  "module": "dist/four-seventeen.esm.js",
+  "browser": "dist/four-seventeen.umd.js",
   "keywords": [
     "art",
     "coffeescript",
@@ -12,10 +14,15 @@
     "canvas"
   ],
   "scripts": {
-    "build": "coffee -cb index.coffee",
-    "watch": "coffee -wcb index.coffee"
+    "build": "rollup -c"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
+    "rollup": "^1.0.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "canvas-prebuilt": "^2.0.0-alpha.14",
     "chance": "^1.0.18",
     "d3": "^5.7.0",
@@ -24,5 +31,9 @@
     "lodash": "^4.17.11",
     "simplex-noise": "^2.4.0",
     "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2"
   }
 }
