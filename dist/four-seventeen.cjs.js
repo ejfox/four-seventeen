@@ -4,30 +4,16 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var fs = _interopDefault(require('fs'));
 var path = _interopDefault(require('path'));
-var yargs = _interopDefault(require('yargs'));
 var d3 = require('d3');
 var _ = _interopDefault(require('lodash'));
 var Chance = _interopDefault(require('chance'));
 var SimplexNoise = _interopDefault(require('simplex-noise'));
+var yargs = _interopDefault(require('yargs'));
 
-const argv = yargs.alias('s', 'seed').argv;
+yargs.alias('s', 'seed').argv;
 
-// fs = require('fs');
-// d3 = require('d3');
-// _ = require('lodash');
-// canvasModule = require('canvas-prebuilt');
-// Chance = require('chance');
-// SimplexNoise = require('simplex-noise');
-// path = require('path');
-// argv = require('yargs').alias('s', 'seed').argv;
-
-
-
-var main = GenArt = (function() {
-  function GenArt(seed, options) {
-    this.tick = bind(this.tick, this);
-    this.makeParticles = bind(this.makeParticles, this);
-    this.init = bind(this.init, this);
+class fourSeventeen {
+  constructor(seed, options) {
     this.seed = seed;
     this.count = 500;
     this.numTicks = 1;
@@ -41,17 +27,21 @@ var main = GenArt = (function() {
     }
   }
 
-  GenArt.prototype.makeCanvas = function() {
-    this.canvas = canvasModule.createCanvas(this.width, this.height);
+  makeCanvas() {
+    if (!this.canvas && this.canvasModule) {
+      this.canvas = this.canvasModule.createCanvas(this.width, this.height);
+    } else if (!this.canvas) {
+      console.log('No canvas defined');
+    }
     this.ctx = this.canvas.getContext('2d');
     if (this.blendMode) {
       this.ctx.globalCompositeOperation = this.blendMode;
     }
     this.ctx.fillStyle = this.bgColor;
     return this.ctx.fillRect(0, 0, this.width, this.height);
-  };
+  }
 
-  GenArt.prototype.init = function(options, callback) {
+  init(options, callback) {
     var countMin;
     if (options == null) {
       options = {};
@@ -87,9 +77,9 @@ var main = GenArt = (function() {
     if (callback) {
       return callback();
     }
-  };
+  }
 
-  GenArt.prototype.makeParticles = function() {
+  makeParticles() {
     this.data = d3.range(this.count).map((function(_this) {
       return function() {
         var c, offset, offsetAmount, x, y;
@@ -115,9 +105,9 @@ var main = GenArt = (function() {
       };
     })(this));
     return this.data;
-  };
+  }
 
-  GenArt.prototype.tick = function() {
+  tick() {
     if (!this.ticks) ;
     this.ticks++;
     this.data.forEach((function(_this) {
@@ -138,16 +128,17 @@ var main = GenArt = (function() {
             max: 8
           });
         }
+
+      this.ctx.beginPath();
+      this.ctx.rect(d.x, d.y, 2, 2);
+      this.ctx.fillStyle = d.color;
+      this.ctx.fill();
+      return this.ctx.closePath();
       };
     })(this));
-    this.ctx.beginPath();
-    this.ctx.rect(d.x, d.y, 2, 2);
-    this.ctx.fillStyle = d.color;
-    this.ctx.fill();
-    return this.ctx.closePath();
-  };
+  }
 
-  GenArt.prototype.tickTil = function(count) {
+  tickTil(count) {
     var j, ref;
     console.log('💫 ' + this.data.length + ' particles ');
     console.log('💯 ' + count + ' ticks');
@@ -156,9 +147,9 @@ var main = GenArt = (function() {
       this.tick();
     }
     return console.timeEnd('⏱️  ticked for');
-  };
+  }
 
-  GenArt.prototype.saveFile = function(filename, callback) {
+  saveFile(filename, callback) {
     var file, fileOutput, stream;
     if (!filename && !this.filename) {
       filename = path.basename(__filename, '.js') + '-' + this.seed;
@@ -174,41 +165,36 @@ var main = GenArt = (function() {
         return callback();
       }
     });
-  };
-
-  return GenArt;
-
-})();
-
-run = function() {
-  var genart, seed;
-  if (argv.seed) {
-    seed = argv.seed;
-  } else {
-    seed = Date.now();
   }
-  genart = new GenArt(seed);
-  if (argv.height) {
-    genart.height = argv.height;
-  }
-  if (argv.width) {
-    genart.width = argv.width;
-  }
-  if (argv.count) {
-    genart.count = argv.count;
-  }
-  if (argv.ticks) {
-    genart.numTicks = argv.ticks;
-  }
-  return genart.init({
-    save: true
-  });
-};
-
-if (require.main === module) {
-  run();
 }
+//
+// run = function() {
+//   var genart, seed;
+//   if (argv.seed) {
+//     seed = argv.seed;
+//   } else {
+//     seed = Date.now();
+//   }
+//   genart = new GenArt(seed);
+//   if (argv.height) {
+//     genart.height = argv.height;
+//   }
+//   if (argv.width) {
+//     genart.width = argv.width;
+//   }
+//   if (argv.count) {
+//     genart.count = argv.count;
+//   }
+//   if (argv.ticks) {
+//     genart.numTicks = argv.ticks;
+//   }
+//   return genart.init({
+//     save: true
+//   });
+// };
+//
+// if (require.main === module) {
+//   run();
+// }
 
-module.exports = GenArt;
-
-module.exports = main;
+module.exports = fourSeventeen;

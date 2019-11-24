@@ -2,10 +2,12 @@
 # Author: EJ Fox <ejfox@ejfox.com>
 # Date created: XX/XX/XXXX
 # Notes:
+canvasModule = require('canvas-prebuilt')
+yargs = require('yargs').argv
 
 # Require GenArt which is the skeleton
 # around which all ArtScripts are built
-GenArt = require '../src/main'
+GenArt = require '../dist/four-seventeen.cjs'
 
 # Set up our requirements
 # SimplexNoise = require 'simplex-noise'
@@ -25,6 +27,7 @@ options = {
   randomizeCount: false
   randomizeTicks: false
   radius: 1
+  canvasModule: canvasModule
 }
 
 # Clone skeleton GenArt ArtScript
@@ -99,19 +102,14 @@ art.tick = ->
     @ctx.closePath()
   )
 
-
-run = ->
+if(require.main == module)
+  # run()
   # If this is being called from the command line
   # --seed foo
   # would set the seed to "foo"
-  if argv.seed
-    seed = argv.seed
+  if yargs.seed
+    seed = yargs.seed
   else
     seed = Date.now()
   art.seed = seed
   art.init({save: true})
-
-if(require.main == module)
-  run()
-
-module.exports = art

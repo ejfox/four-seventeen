@@ -33,7 +33,7 @@ export default [
 	// `file` and `format` for each target)
 	{
 		input: 'src/main.js',
-		external: ['fs', 'path', 'yargs', 'd3', 'lodash', 'chance', 'simplex-noise'],
+		external: ['canvas', 'fs', 'path', 'yargs', 'd3', 'lodash', 'chance', 'simplex-noise'],
 		output: [
 			{ file: pkg.main, format: 'cjs' },
 			{ file: pkg.module, format: 'es' }
